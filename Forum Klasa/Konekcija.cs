@@ -40,7 +40,7 @@ namespace Forum_Klasa
             }
         }
 
-        /// <summary>Ad-hoc SQL query — use only for reads that lack a stored procedure.</summary>
+
         public static DataTable PreuzmiPodatkeSQL(string sql, SqlParameter[] parametri)
         {
             using (SqlConnection conn = new SqlConnection(connString))
@@ -56,7 +56,7 @@ namespace Forum_Klasa
             }
         }
 
-        // ---------- Korisnik ----------
+
         public static void KorisnikUnos(string email, string lozinka, string ime)
         {
             SqlParameter[] p = { new SqlParameter("@email", email), new SqlParameter("@lozinka", lozinka), new SqlParameter("@ime", ime) };
@@ -75,7 +75,7 @@ namespace Forum_Klasa
             IzvrsiProceduru("Korisnik_Brisanje", p);
         }
 
-        // ---------- Kategorija ----------
+
         public static DataTable VratiSveKategorije()
         {
             return PreuzmiPodatke("Vrati_Kategorije", null);
@@ -93,7 +93,7 @@ namespace Forum_Klasa
             IzvrsiProceduru("Kategorija_Brisanje", p);
         }
 
-        // ---------- Objava ----------
+       
         public static DataTable VratiObjaveKategorije(int katId)
         {
             SqlParameter[] p = { new SqlParameter("@kategorija_id", katId) };
@@ -129,7 +129,6 @@ namespace Forum_Klasa
             IzvrsiProceduru("Objava_Brisanje", p);
         }
 
-        // ---------- Glasovi ----------
         public static void Glasaj(string objavaId, string korId, string vrednost)
         {
             SqlParameter[] p = {
