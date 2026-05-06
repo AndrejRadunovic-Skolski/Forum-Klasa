@@ -11,7 +11,7 @@ namespace Forum_Klasa
 {
 
 
-    public partial class Default
+    public partial class Objava
     {
 
         /// <summary>
@@ -51,102 +51,138 @@ namespace Forum_Klasa
         protected global::System.Web.UI.WebControls.LinkButton btnOdjava;
 
         /// <summary>
-        /// lnkNovaObjava control.
+        /// litNaslov control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lnkNovaObjava;
+        protected global::System.Web.UI.WebControls.Literal litNaslov;
 
         /// <summary>
-        /// rptKategorije control.
+        /// litAutor control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptKategorije;
+        protected global::System.Web.UI.WebControls.Literal litAutor;
 
         /// <summary>
-        /// litKatIme control.
+        /// litDatum control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litKatIme;
+        protected global::System.Web.UI.WebControls.Literal litDatum;
 
         /// <summary>
-        /// litKatOpis control.
+        /// litSadrzaj control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litKatOpis;
+        protected global::System.Web.UI.WebControls.Literal litSadrzaj;
 
         /// <summary>
-        /// rptObjave control.
+        /// btnUpvote control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptObjave;
+        protected global::System.Web.UI.WebControls.Button btnUpvote;
 
         /// <summary>
-        /// pnlEmpty control.
+        /// litVotes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlEmpty;
+        protected global::System.Web.UI.WebControls.Literal litVotes;
 
         /// <summary>
-        /// txtNaslov control.
+        /// btnDownvote control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNaslov;
+        protected global::System.Web.UI.WebControls.Button btnDownvote;
 
         /// <summary>
-        /// txtSadrzaj control.
+        /// btnDelete control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSadrzaj;
+        protected global::System.Web.UI.WebControls.Button btnDelete;
 
         /// <summary>
-        /// hfKatIdForPost control.
+        /// litOdgCount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hfKatIdForPost;
+        protected global::System.Web.UI.WebControls.Literal litOdgCount;
 
         /// <summary>
-        /// btnPostuj control.
+        /// rptOdgovori control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnPostuj;
+        protected global::System.Web.UI.WebControls.Repeater rptOdgovori;
 
         /// <summary>
-        /// hfShowModal control.
+        /// pnlNoReplies control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hfShowModal;
+        protected global::System.Web.UI.WebControls.Panel pnlNoReplies;
+
+        /// <summary>
+        /// txtOdgovor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtOdgovor;
+
+        /// <summary>
+        /// btnOdgovori control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnOdgovori;
+
+        /// <summary>
+        /// hfObjavaId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfObjavaId;
+
+        /// <summary>
+        /// hfKatId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfKatId;
     }
 }

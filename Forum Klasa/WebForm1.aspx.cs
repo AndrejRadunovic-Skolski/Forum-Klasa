@@ -23,8 +23,8 @@ namespace Forum_Klasa
             gvKategorije.DataBind();
 
             ddlKategorije.DataSource = dt;
-            ddlKategorije.DataTextField = "ImeKategorije";
-            ddlKategorije.DataValueField = "ID";
+            ddlKategorije.DataTextField = "Ime";
+            ddlKategorije.DataValueField = "kategorija_ID";
             ddlKategorije.DataBind();
             ddlKategorije.Items.Insert(0, new ListItem("-- Odaberi --", "0"));
         }

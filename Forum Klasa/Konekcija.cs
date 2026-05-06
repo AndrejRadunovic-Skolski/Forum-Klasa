@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
@@ -12,39 +12,51 @@ namespace Forum_Klasa
         public static int IzvrsiProceduru(string imeProcedure, SqlParameter[] parametri)
         {
             using (SqlConnection conn = new SqlConnection(connString))
+            using (SqlCommand cmd = new SqlCommand(imeProcedure, conn))
             {
-                using (SqlCommand cmd = new SqlCommand(imeProcedure, conn))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    if (parametri != null) cmd.Parameters.AddRange(parametri);
-
-                    SqlParameter ret = new SqlParameter("ReturnValue", SqlDbType.Int);
-                    ret.Direction = ParameterDirection.ReturnValue;
-                    cmd.Parameters.Add(ret);
-
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                    return (int)ret.Value;
-                }
+                cmd.CommandType = CommandType.StoredProcedure;
+                if (parametri != null) cmd.Parameters.AddRange(parametri);
+                SqlParameter ret = new SqlParameter("ReturnValue", SqlDbType.Int);
+                ret.Direction = ParameterDirection.ReturnValue;
+                cmd.Parameters.Add(ret);
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                return (int)ret.Value;
             }
         }
 
         public static DataTable PreuzmiPodatke(string imeProcedure, SqlParameter[] parametri)
         {
             using (SqlConnection conn = new SqlConnection(connString))
+            using (SqlCommand cmd = new SqlCommand(imeProcedure, conn))
             {
-                using (SqlCommand cmd = new SqlCommand(imeProcedure, conn))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    if (parametri != null) cmd.Parameters.AddRange(parametri);
-                    SqlDataAdapter da = new SqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-                    return dt;
-                }
+                cmd.CommandType = CommandType.StoredProcedure;
+                if (parametri != null) cmd.Parameters.AddRange(parametri);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                conn.Open();
+                da.Fill(dt);
+                return dt;
             }
         }
 
+        /// <summary>Ad-hoc SQL query — use only for reads that lack a stored procedure.</summary>
+        public static DataTable PreuzmiPodatkeSQL(string sql, SqlParameter[] parametri)
+        {
+            using (SqlConnection conn = new SqlConnection(connString))
+            using (SqlCommand cmd = new SqlCommand(sql, conn))
+            {
+                cmd.CommandType = CommandType.Text;
+                if (parametri != null) cmd.Parameters.AddRange(parametri);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                conn.Open();
+                da.Fill(dt);
+                return dt;
+            }
+        }
+
+        // ---------- Korisnik ----------
         public static void KorisnikUnos(string email, string lozinka, string ime)
         {
             SqlParameter[] p = { new SqlParameter("@email", email), new SqlParameter("@lozinka", lozinka), new SqlParameter("@ime", ime) };
@@ -63,6 +75,7 @@ namespace Forum_Klasa
             IzvrsiProceduru("Korisnik_Brisanje", p);
         }
 
+        // ---------- Kategorija ----------
         public static DataTable VratiSveKategorije()
         {
             return PreuzmiPodatke("Vrati_Kategorije", null);
@@ -80,6 +93,7 @@ namespace Forum_Klasa
             IzvrsiProceduru("Kategorija_Brisanje", p);
         }
 
+        // ---------- Objava ----------
         public static DataTable VratiObjaveKategorije(int katId)
         {
             SqlParameter[] p = { new SqlParameter("@kategorija_id", katId) };
@@ -89,12 +103,12 @@ namespace Forum_Klasa
         public static void ObjavaDodaj(string korId, string odgId, string katId, string naslov, string sadrzaj)
         {
             SqlParameter[] p = {
-            new SqlParameter("@korisnik_id", korId),
-            new SqlParameter("@odgovor_id", odgId),
-            new SqlParameter("@kategorija_id", katId),
-            new SqlParameter("@ime", naslov),
-            new SqlParameter("@sadrzaj", sadrzaj)
-        };
+                new SqlParameter("@korisnik_id", korId),
+                new SqlParameter("@odgovor_id", odgId),
+                new SqlParameter("@kategorija_id", katId),
+                new SqlParameter("@ime", naslov),
+                new SqlParameter("@sadrzaj", sadrzaj)
+            };
             IzvrsiProceduru("Objava_Postavljanje", p);
         }
 
@@ -109,7 +123,13 @@ namespace Forum_Klasa
             SqlParameter[] p = { new SqlParameter("@objava_id", objavaId) };
             return PreuzmiPodatke("Vrati_Odgovore_Na_Objavu", p);
         }
+        public static void OdgovorObrisi(int id)
+        {
+            SqlParameter[] p = { new SqlParameter("@objava_id", id) };
+            IzvrsiProceduru("Objava_Brisanje", p);
+        }
 
+        // ---------- Glasovi ----------
         public static void Glasaj(string objavaId, string korId, string vrednost)
         {
             SqlParameter[] p = {
@@ -129,11 +149,22 @@ namespace Forum_Klasa
             IzvrsiProceduru("Glas_Brisanje", p);
         }
 
-        public static void OdgovorObrisi(int id)
+        public static int BrojGlasova(int objavaId)
         {
-            SqlParameter[] p = { new SqlParameter("@objava_id", id) };
-            IzvrsiProceduru("Objava_Brisanje", p);
+            SqlParameter[] p = { new SqlParameter("@objava_id", objavaId) };
+            DataTable dt = PreuzmiPodatke("Objava_Brojanje_Glasova", p);
+            if (dt.Rows.Count > 0 && dt.Rows[0][0] != DBNull.Value)
+                return Convert.ToInt32(dt.Rows[0][0]);
+            return 0;
+        }
+
+        public static int BrojOdgovora(int objavaId)
+        {
+            SqlParameter[] p = { new SqlParameter("@objava_id", objavaId) };
+            DataTable dt = PreuzmiPodatke("Objava_Brojanje_Odgovora", p);
+            if (dt.Rows.Count > 0 && dt.Rows[0][0] != DBNull.Value)
+                return Convert.ToInt32(dt.Rows[0][0]);
+            return 0;
         }
     }
-
 }

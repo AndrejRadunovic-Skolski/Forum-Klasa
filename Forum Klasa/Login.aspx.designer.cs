@@ -11,7 +11,7 @@ namespace Forum_Klasa
 {
 
 
-    public partial class Default
+    public partial class Login
     {
 
         /// <summary>
@@ -24,129 +24,84 @@ namespace Forum_Klasa
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// litIme control.
+        /// lblMsg control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litIme;
+        protected global::System.Web.UI.WebControls.Label lblMsg;
 
         /// <summary>
-        /// lnkAdmin control.
+        /// txtLoginEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lnkAdmin;
+        protected global::System.Web.UI.WebControls.TextBox txtLoginEmail;
 
         /// <summary>
-        /// btnOdjava control.
+        /// txtLoginLozinka control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnOdjava;
+        protected global::System.Web.UI.WebControls.TextBox txtLoginLozinka;
 
         /// <summary>
-        /// lnkNovaObjava control.
+        /// btnLogin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lnkNovaObjava;
+        protected global::System.Web.UI.WebControls.Button btnLogin;
 
         /// <summary>
-        /// rptKategorije control.
+        /// txtRegIme control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptKategorije;
+        protected global::System.Web.UI.WebControls.TextBox txtRegIme;
 
         /// <summary>
-        /// litKatIme control.
+        /// txtRegEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litKatIme;
+        protected global::System.Web.UI.WebControls.TextBox txtRegEmail;
 
         /// <summary>
-        /// litKatOpis control.
+        /// txtRegLozinka control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litKatOpis;
+        protected global::System.Web.UI.WebControls.TextBox txtRegLozinka;
 
         /// <summary>
-        /// rptObjave control.
+        /// btnRegister control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptObjave;
+        protected global::System.Web.UI.WebControls.Button btnRegister;
 
         /// <summary>
-        /// pnlEmpty control.
+        /// hfActiveTab control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlEmpty;
-
-        /// <summary>
-        /// txtNaslov control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNaslov;
-
-        /// <summary>
-        /// txtSadrzaj control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSadrzaj;
-
-        /// <summary>
-        /// hfKatIdForPost control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hfKatIdForPost;
-
-        /// <summary>
-        /// btnPostuj control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnPostuj;
-
-        /// <summary>
-        /// hfShowModal control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hfShowModal;
+        protected global::System.Web.UI.WebControls.HiddenField hfActiveTab;
     }
 }
